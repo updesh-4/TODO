@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { createTodo, listTodos, updateTodo, deleteTodo } from '../controllers/todosController';
+import { requireAuth } from '../middleware/auth';
+const r = Router();
+r.use(requireAuth);
+r.get('/', listTodos);
+r.post('/', createTodo);
+r.patch('/:id', updateTodo);
+r.delete('/:id', deleteTodo);
+export default r;
